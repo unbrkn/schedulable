@@ -77,7 +77,7 @@ module Schedulable
             
             if schedule.present?
             
-              now = Time.current
+              min_date = [schedule.date, Time.current].max
               
               # TODO: Make configurable 
               occurrence_attribute = :date 
@@ -86,7 +86,7 @@ module Schedulable
               terminating = schedule.rule != 'singular' && (schedule.until.present? || schedule.count.present? && schedule.count > 1)
               
               max_period = Schedulable.config.max_build_period || 1.year
-              max_date = now + max_period
+              max_date = min_date + max_period
               
               max_date = terminating ? [max_date, schedule.last.to_time].min : max_date
               
@@ -95,11 +95,11 @@ module Schedulable
   
               if schedule.rule != 'singular'
                 # Get schedule occurrences
-                all_occurrences = schedule.occurrences_between(Time.current, max_date.to_time)
+                all_occurrences = schedule.occurrences_between(min_date.to_time, max_date.to_time)
                 occurrences = []
                 # Filter valid dates
                 all_occurrences.each_with_index do |occurrence_date, index|
-                  if occurrence_date.present? && occurrence_date.to_time > now
+                  if occurrence_date.present? && occurrence_date.to_time > min_date
                     if occurrence_date.to_time < max_date && (index <= max_count || max_count <= 0)
                       occurrences << occurrence_date
                     else
@@ -162,7 +162,7 @@ module Schedulable
               occurrences_records = schedulable.send("remaining_#{occurrences_association}")
               record_count = 0
               occurrences_records.each do |occurrence_record|
-                if occurrence_record.date > now
+                if occurrence_record.date > min_date
                   # Destroy occurrence if date or count lies beyond range
                   if schedule.rule != 'singular' && (!schedule.occurs_on?(occurrence_record.date.to_date) || !schedule.occurring_at?(occurrence_record.date.to_time) || occurrence_record.date > max_date) || schedule.rule == 'singular' && record_count > 0
                     occurrences_records.destroy(occurrence_record)
