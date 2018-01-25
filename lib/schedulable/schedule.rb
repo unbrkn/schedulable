@@ -56,10 +56,11 @@ module Schedulable
         self.interval||= 1
         self.count||= 0
 
-        time = Date.today.to_time(:utc)
-        if self.time.present?
-          time = time + self.time.seconds_since_midnight.seconds
-        end
+        time = self.date || Date.current
+        time = time.to_datetime.change(
+          hour: self.time.in_time_zone.hour,
+          min: self.time.in_time_zone.min
+        )
         time_string = time.strftime("%d-%m-%Y %I:%M %p")
         time = Time.zone.parse(time_string)
 
