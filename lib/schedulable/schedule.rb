@@ -17,7 +17,7 @@ module Schedulable
       validate :validate_day_of_week, if: Proc.new { |schedule| schedule.rule == 'monthly' }
 
       def to_icecube
-        return @schedule
+        @schedule
       end
 
       def to_s
@@ -37,7 +37,7 @@ module Schedulable
             I18n.locale = locale
           end
         end
-        return message
+        message
       end
 
       def method_missing(meth, *args, &block)
@@ -50,17 +50,16 @@ module Schedulable
         [:id, :date, :time, :rule, :until, :count, :interval, day: [], day_of_week: [monday: [], tuesday: [], wednesday: [], thursday: [], friday: [], saturday: [], sunday: []]]
       end
 
-      def update_schedule()
+      def update_schedule
 
         self.rule||= "singular"
         self.interval||= 1
         self.count||= 0
 
         time = (self.date || Date.current).to_time
-        self_tz = self.time.in_time_zone if self.time
         time = time.change(
-          hour: self_tz ? self_tz.hour : 0,
-          min: self_tz ? self_tz.min : 0
+          hour: self.time.present? ? self.time.hour : 0,
+          min: self.time.present? ? self.time..min : 0
         )
         time_string = time.strftime("%d-%m-%Y %I:%M %p")
         time = Time.zone.parse(time_string)
@@ -104,7 +103,7 @@ module Schedulable
 
       def validate_day
         day.reject! { |c| c.empty? }
-        if !day.any?
+        unless day.any?
           errors.add(:day, :empty)
         end
       end
@@ -118,7 +117,7 @@ module Schedulable
             break
           end
         }
-        if !any
+        unless any
           errors.add(:day_of_week, :empty)
         end
       end
