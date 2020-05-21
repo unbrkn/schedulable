@@ -59,7 +59,7 @@ module Schedulable
         time = (self.date || Date.current).to_time
         time = time.change(
           hour: self.time.present? ? self.time.hour : 0,
-          min: self.time.present? ? self.time..min : 0
+          min: self.time.present? ? self.time.min : 0
         )
         time_string = time.strftime("%d-%m-%Y %I:%M %p")
         time = Time.zone.parse(time_string)
