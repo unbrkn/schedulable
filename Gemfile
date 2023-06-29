@@ -13,11 +13,10 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
-gem 'ice_cube', git: 'git://github.com/joelmeyerhamme/ice_cube.git', branch: 'master'
+gem 'ice_cube', ">= 0.16.4"
 gem 'simple_form'
-gem 'rails-i18n', '~> 4.0.0' # For 4.0.x
+gem 'rails-i18n', '~> 6.0.0'
 gem "date_picker", github: 'benignware/date_picker'
 gem 'database_cleaner'
 gem 'sqlite3'
-gem 'factory_girl_rails', "~> 4.0"
-gem 'turbolinks', :git => 'git://github.com/rails/turbolinks.git'
+gem 'factory_bot_rails'

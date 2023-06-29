@@ -4,15 +4,12 @@ module Schedulable
 
     extend ActiveSupport::Concern
 
-    included do
-    end
-
     module ClassMethods
 
       def acts_as_schedulable(name, options = {})
 
         name||= :schedule
-        attribute = :date
+        # attribute = :date
 
         has_one name, as: :schedulable, dependent: :destroy, class_name: 'Schedule'
         accepts_nested_attributes_for name
@@ -32,7 +29,7 @@ module Schedulable
           options[:occurrences][:dependent]||:destroy
           options[:occurrences][:autosave]||= true
 
-          has_many occurrences_association, options[:occurrences]
+          has_many occurrences_association, **options[:occurrences]
 
           # table_name
           occurrences_table_name = occurrences_association.to_s.tableize
@@ -40,12 +37,12 @@ module Schedulable
           # remaining
           remaining_occurrences_options = options[:occurrences].clone
           remaining_occurrences_association = ("remaining_" << occurrences_association.to_s).to_sym
-          has_many remaining_occurrences_association, -> { where("#{occurrences_table_name}.date >= ?", Time.current).order('date ASC') }, remaining_occurrences_options
+          has_many remaining_occurrences_association, -> { where("#{occurrences_table_name}.date >= ?", Time.current).order('date ASC') }, **remaining_occurrences_options
 
           # previous
           previous_occurrences_options = options[:occurrences].clone
           previous_occurrences_association = ("previous_" << occurrences_association.to_s).to_sym
-          has_many previous_occurrences_association, -> { where("#{occurrences_table_name}.date < ?", Time.current).order('date DESC')}, previous_occurrences_options
+          has_many previous_occurrences_association, -> { where("#{occurrences_table_name}.date < ?", Time.current).order('date DESC')}, **previous_occurrences_options
 
           ActsAsSchedulable.add_occurrences_association(self, occurrences_association)
 
@@ -71,9 +68,7 @@ module Schedulable
           end
 
           define_method "build_#{occurrences_association}" do
-
             # build occurrences for events
-
             schedule = self.send(name)
 
             if schedule.present?
@@ -81,7 +76,7 @@ module Schedulable
               min_date = schedule.date.present? ? [schedule.date, Time.current].max : Time.current
 
               # TODO: Make configurable
-              occurrence_attribute = :date
+              # occurrence_attribute = :date
 
               schedulable = schedule.schedulable
               terminating = schedule.rule != 'singular' && (schedule.until.present? || schedule.count.present? && schedule.count > 1)
@@ -106,7 +101,6 @@ module Schedulable
 
               # Clean up unused remaining occurrences
               schedulable.send("remaining_#{occurrences_association}").where.not(date: times).destroy_all
-
             end
           end
         end

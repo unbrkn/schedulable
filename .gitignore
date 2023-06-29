@@ -18,6 +18,7 @@ pkg
 
 # Eclipse
 .project
+.idea
 
 # Markdown preview
 .README.md.html

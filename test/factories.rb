@@ -1,5 +1,5 @@
-FactoryGirl.define do
-  
+FactoryBot.define do
+
   factory :schedule do
     rule 'weekly'
     day ['monday']
@@ -7,7 +7,7 @@ FactoryGirl.define do
     count 10
     self.until DateTime.now + 3.months
   end
-  
+
   factory :event do
     name "My Event"
     schedule

@@ -943,3 +943,295 @@ SchedulableTest: test_truth
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35m (0.0ms)[0m  commit transaction
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "event_occurrences"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "event_occurrences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "date" datetime, "schedulable_id" integer, "schedulable_type" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE INDEX "index_event_occurrences_on_schedulable_type_and_schedulable_id" ON "event_occurrences" ("schedulable_type", "schedulable_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "events" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "schedulable_id" integer, "schedulable_type" varchar, "date" date, "time" time, "rule" varchar, "interval" varchar, "day" text, "day_of_week" text, "until" datetime, "count" integer, "created_at" datetime, "updated_at" datetime)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20150408191241)[0m
+  [1m[35m (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20150331202637),
+(20150402115511);
+
+[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2023-06-29 07:03:45.754257"], ["updated_at", "2023-06-29 07:03:45.754257"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "81af8182f90b7dcd786414db2156b5d89f8933ae"], ["created_at", "2023-06-29 07:03:45.756403"], ["updated_at", "2023-06-29 07:03:45.756403"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.8ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.1ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.6ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.9ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (0.5ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.3ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.1ms)[0m  [1m[35mTRUNCATE TABLE "event_occurrences"[0m
+  [1m[35m (1.0ms)[0m  [1m[31mDELETE FROM "event_occurrences"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'event_occurrences';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "events"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "events"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'events';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mTRUNCATE TABLE "schedules"[0m
+  [1m[35m (0.4ms)[0m  [1m[31mDELETE FROM "schedules"[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT name FROM sqlite_master WHERE type='table' AND name='sqlite_sequence';[0m
+  [1m[35m (0.0ms)[0m  [1m[31mDELETE FROM sqlite_sequence where name = 'schedules';[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Create (0.2ms)[0m  [1m[32mINSERT INTO "schedules" ("time", "rule", "interval", "day", "until", "count", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["time", "2000-01-01 09:31:06.951503"], ["rule", "weekly"], ["interval", "1"], ["day", "---\n- monday\n"], ["until", "2023-09-29 07:31:06.951525"], ["count", 10], ["created_at", "2023-06-29 07:31:06.959003"], ["updated_at", "2023-06-29 07:31:06.959003"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEvent Create (0.0ms)[0m  [1m[32mINSERT INTO "events" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "My Event"], ["created_at", "2023-06-29 07:31:06.963088"], ["updated_at", "2023-06-29 07:31:06.963088"]]
+  [1m[36mSchedule Update (0.0ms)[0m  [1m[33mUPDATE "schedules" SET "schedulable_id" = ?, "schedulable_type" = ?, "updated_at" = ? WHERE "schedules"."id" = ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["updated_at", "2023-06-29 07:31:06.963473"], ["id", 1]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-03 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.1ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-07-03 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.973679"], ["updated_at", "2023-06-29 07:31:06.973679"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-10 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-07-10 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.974198"], ["updated_at", "2023-06-29 07:31:06.974198"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-17 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-07-17 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.974592"], ["updated_at", "2023-06-29 07:31:06.974592"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-24 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-07-24 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.974971"], ["updated_at", "2023-06-29 07:31:06.974971"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-31 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-07-31 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.975354"], ["updated_at", "2023-06-29 07:31:06.975354"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-08-07 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-08-07 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.975724"], ["updated_at", "2023-06-29 07:31:06.975724"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-08-14 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-08-14 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.976117"], ["updated_at", "2023-06-29 07:31:06.976117"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-08-21 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-08-21 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.976493"], ["updated_at", "2023-06-29 07:31:06.976493"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-08-28 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-08-28 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.976859"], ["updated_at", "2023-06-29 07:31:06.976859"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND "event_occurrences"."date" = ? ORDER BY date ASC LIMIT ?[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-09-04 08:31:00"], ["LIMIT", 1]]
+  [1m[36mEventOccurrence Create (0.0ms)[0m  [1m[32mINSERT INTO "event_occurrences" ("date", "schedulable_id", "schedulable_type", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["date", "2023-09-04 08:31:00"], ["schedulable_id", 1], ["schedulable_type", "Event"], ["created_at", "2023-06-29 07:31:06.977230"], ["updated_at", "2023-06-29 07:31:06.977230"]]
+  [1m[36mEventOccurrence Load (0.0ms)[0m  [1m[34mSELECT "event_occurrences".* FROM "event_occurrences" WHERE "event_occurrences"."schedulable_id" = ? AND "event_occurrences"."schedulable_type" = ? AND (event_occurrences.date >= '2023-06-29 07:31:06.977520') AND "event_occurrences"."date" NOT IN (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ORDER BY date ASC[0m  [["schedulable_id", 1], ["schedulable_type", "Event"], ["date", "2023-07-03 08:31:00"], ["date", "2023-07-10 08:31:00"], ["date", "2023-07-17 08:31:00"], ["date", "2023-07-24 08:31:00"], ["date", "2023-07-31 08:31:00"], ["date", "2023-08-07 08:31:00"], ["date", "2023-08-14 08:31:00"], ["date", "2023-08-21 08:31:00"], ["date", "2023-08-28 08:31:00"], ["date", "2023-09-04 08:31:00"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+---------------------------
+SchedulableTest: test_truth
+---------------------------
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m

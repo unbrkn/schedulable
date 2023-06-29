@@ -7,17 +7,14 @@ require "schedulable/version"
 Gem::Specification.new do |s|
   s.name        = "schedulable"
   s.version     = Schedulable::VERSION
-  s.authors     = ["Rafael Nowrotek"]
-  s.email       = ["mail@benignware.com"]
-  s.homepage    = "http://github.com/benignware"
+  s.authors     = ["Rafael Nowrotek", "Emanuel Imhof"]
+  s.email       = ["emanuel@unbrkn.ch"]
+  s.homepage    = "http://github.com/unbrkn/schedulable"
   s.summary     = "Handling recurring events in rails."
   s.description = "Handling recurring events in rails."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
 
-  s.add_dependency "rails", ">= 4.0.3"
-  s.add_dependency "ice_cube"
-  
-  
-
+  s.add_dependency "rails", ">= 6.1.7.4"
+  s.add_dependency "ice_cube", ">= 0.16.4"
 end
